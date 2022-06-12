@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
-import Error from './error'
+import AlertaError from './AlertaError'
  // NOTA: los props solo puede pasarse de app a hijos , asi que para enviar datos desde este componente se crea una funcion desde app y se envia como props a este componente
 export default function Formulario({pacientes,setPacientes,paciente,setPaciente}) {// son props que vienen del padre
     const [nombre,setNombre]=useState('')
@@ -37,7 +37,7 @@ export default function Formulario({pacientes,setPacientes,paciente,setPaciente}
 
             if ([nombre,propietario,email,fecha,sintomas].includes(''))//aqui se metio todas las variables en un arreglo para validar su contenido 
             {                                                           // el includes es para verificar cada indice de este arreglo
-                console.log('Hay almenos un campo Vacio')
+                
                 setError(true)
                 return; // corta  la funcion hasta alli evitando que se ejecute las demas lineas
             }                                                            
@@ -86,7 +86,7 @@ export default function Formulario({pacientes,setPacientes,paciente,setPaciente}
 
                 
                 >
-                    {error&&<Error><p> todos los campos son obligatorios </p></Error>}
+                    {error&&<AlertaError><p> todos los campos son obligatorios </p></AlertaError>}
 
                     <div className='mb-5' >
                         <label htmlFor="mascota" className='block font-bold text-gray-700  uppercase'> Nombre Mascota</label>
